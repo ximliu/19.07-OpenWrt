@@ -57,7 +57,7 @@ jobs:
 
     steps:
     - name: 准备完毕
-      uses: actions/checkout@master
+      uses: actions/checkout@main
 
     - name: 开始安装编译所需系统
       env:
@@ -122,14 +122,14 @@ jobs:
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"
-        echo "::set-env name=FILE_DATE::$(date "+%Y-%m-%d %H.%I.%S")"
+        echo "::set-env name=FILE_DATE::$(date "+%Y-%m-%d %H.%M.%S")"
 
     - name: 检查github储存空间情况
       if: (!cancelled())
       run: df -hT
 
     - name: 上传bin文件夹(固件+ipk)在github空间
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -145,7 +145,7 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: 上传固件在github空间
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
