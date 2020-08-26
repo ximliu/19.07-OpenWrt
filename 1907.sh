@@ -7,6 +7,9 @@
 # 跟LEDE的不一样，19.07源码编译成功后就不需要登录密码的，所以不需要设置密码为空
 #
 
+# 修改 banne 文件（不要修改此行代码,怕弄的diy-lede.sh文件全失效,不需要的话前面加#，或者全行代码删除了）
+rm -rf ./package/base-files/files/etc/banne && cd .. && cp -f ./banner openwrt/package/base-files/files/etc/ && cd openwrt
+
 
 # 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
 sed -i 's/OpenWrt/OpenWrt-123/g' ./package/base-files/files/bin/config_generate
@@ -33,6 +36,7 @@ git clone https://github.com/jerrykuku/node-request.git package/diy/node-request
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/luci-app-jd-dailybonus  #京东签到
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-filetransfer package/diy/luci-app-filetransfer  #文件传输（可用于安装IPK）
 
+
 #使用LEDE的ShadowSocksR Plus+出国软件 (源码自带passwall出国软件)
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/diy/luci-app-ssr-plus
 svn co https://github.com/fw876/helloworld/trunk/tcping package/diy/tcpping
@@ -48,11 +52,7 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/diy/redsocks2
 
 
-
-# 删除源码argon主题，替换成最新的argon主题
-rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
-#全新的[argon-主题]登录界面,图片背景跟随Bing.com，每天自动切换
-#增加可自定义登录背景功能，可用WinSCP将文件上传到/www/luci-static/argon/background 目录下，支持jpg png gif格式图片
-#主题将会优先显示自定义背景，多个背景为随机显示，系统默认依然为从bing获取
-#增加了可以强制锁定暗色模式的功能，如果需要，请登录ssh 输入：touch /etc/dark 即可开启，关闭请输入：rm -rf /etc/dark，关闭后颜色模式为跟随系统
+rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/diy/luci-theme-argon  #新的argon主题
+#全新的[argon-主题]此主题玩法很多,这里看说明【https://github.com/jerrykuku/luci-theme-argon/blob/18.06/README_ZH.md】
+#用WinSCP连接openwrt，在/www/luci-static/argon里面创建background文件夹（如果本身就有background就不需要创建）来存放jpg png gif格式图片可以自定义登陆界面，gif图片为动态登陆界面
 
