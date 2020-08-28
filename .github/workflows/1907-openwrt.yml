@@ -41,7 +41,7 @@ env:
   REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: dev-19.07
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 1907.config
+  CONFIG_FILE: k3.config
   DIY_OP_SH: 1907.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
