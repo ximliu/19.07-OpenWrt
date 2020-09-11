@@ -32,6 +32,7 @@ git clone -b master https://github.com/vernesong/OpenClash.git package/diy/luci-
 git clone https://github.com/frainzy1477/luci-app-clash.git package/diy/luci-app-clash  #clash出国软件
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone https://github.com/liwenjie119/luci-app-koolproxyR package/myapp/luci-app-koolproxyR
 git clone https://github.com/tty228/luci-app-serverchan.git package/diy/luci-app-serverchan  #微信推送
