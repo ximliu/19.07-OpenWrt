@@ -21,7 +21,7 @@ sed -i 's/OpenWrt/OpenWrt/g' ./package/base-files/files/bin/config_generate
 
 
 # 修改 argon 为默认主题（不选择那些会自动改变为默认主题的主题才有效果）
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 
 # 修改 banne 文件（不要修改此行代码,修改错误怕弄的diy-lede.sh文件失效,不需要的话前面加#，或者全行代码删除了）
