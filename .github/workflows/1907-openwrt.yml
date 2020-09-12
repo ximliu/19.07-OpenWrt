@@ -43,10 +43,10 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: 1907.config
   DIY_OP_SH: 1907.sh
-  SSH_ACTIONS: true
-  UPLOAD_BIN_DIR: false
-  UPLOAD_CONFIG: true
-  UPLOAD_FIRMWARE: true
+  SSH_ACTIONS: false
+  UPLOAD_BIN_DIR: true
+  UPLOAD_CONFIG: false
+  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
@@ -124,9 +124,9 @@ jobs:
         [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::$(cat DEVICE_NAME)"
         echo "::set-env name=FILE_DATE::$(date "+%Y-%m-%d %H.%M.%S")"
 
-    - name: 检查github储存空间情况
-      if: (!cancelled())
-      run: df -hT
+  #  - name: 检查github储存空间情况
+  #    if: (!cancelled())
+  #    run: df -hT
 
     - name: 上传bin文件夹(固件+ipk)在github空间
       uses: actions/upload-artifact@main
